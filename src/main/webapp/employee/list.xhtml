@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/default.xhtml">
+
+	<ui:define name="body">
+		<h1>List Employees</h1>
+		<br />
+		<h:form id="form">
+			<h:dataTable id="dataTable" var="employe"
+				value="#{employeMB.findAll()}" style="width: 100%" editable="true">
+
+				<h:column headerText="id">
+					<h:outputText value="#{employe.id}" />
+				</h:column>
+				<h:column headerText="nom">
+					<h:outputText value="#{employe.nom}" />
+				</h:column>
+				<h:column headerText="prenom">
+					<h:outputText value="#{employe.prenom}" />
+				</h:column>
+
+				<h:column headerText="Action" colspan="2">
+					<h:commandLink action="#{employeMB.remove()}" value="Supp"></h:commandLink>
+				</h:column>
+			</h:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

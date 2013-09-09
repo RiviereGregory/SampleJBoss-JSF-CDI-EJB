@@ -25,22 +25,23 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
 public class Resources {
 
+	// Produces permet de pouvoir injecter tous les types autre que EJB
 	@Produces
-    @PersistenceContext
-    private EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
-    @Produces
-    public Logger produceLog(InjectionPoint injectionPoint) {
-        return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-    }
+	@Produces
+	public Logger produceLog(InjectionPoint injectionPoint) {
+		// Créer un Logger pour la classe où il va être injecté grace à injectionPoint
+		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+	}
 
-    @Produces
-    @RequestScoped
-    public FacesContext produceFacesContext() {
-        return FacesContext.getCurrentInstance();
-    }
+	@Produces
+	@RequestScoped
+	public FacesContext produceFacesContext() {
+		return FacesContext.getCurrentInstance();
+	}
 
 }
