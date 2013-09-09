@@ -6,15 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "login"))
-public class Employe implements Serializable {
+@Table
+public class Mission implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,22 +27,23 @@ public class Employe implements Serializable {
 	@Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
 	private String nom;
 
-	private String prenom;
+	private String type;
 
-	private String login;
+	private Integer duree;
 
-	private String password;
+	@ManyToOne
+	private Employe employe;
 
-	public Employe() {
+	public Mission() {
 	}
 
-	public Employe(Integer id, String nom, String prenom, String login, String password) {
+	public Mission(Integer id, String nom, String type, Integer duree, Employe employe) {
 		super();
 		this.id = id;
 		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.password = password;
+		this.type = type;
+		this.duree = duree;
+		this.employe = employe;
 	}
 
 	public Integer getId() {
@@ -61,30 +62,6 @@ public class Employe implements Serializable {
 		this.nom = nom;
 	}
 
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,7 +78,7 @@ public class Employe implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employe other = (Employe) obj;
+		Mission other = (Mission) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -110,10 +87,33 @@ public class Employe implements Serializable {
 		return true;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getDuree() {
+		return duree;
+	}
+
+	public void setDuree(Integer duree) {
+		this.duree = duree;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login
-				+ ", password=" + password + "]";
+		return "Mission [id=" + id + ", nom=" + nom + ", type=" + type + ", duree=" + duree + "]";
+	}
+
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
 	}
 
 }

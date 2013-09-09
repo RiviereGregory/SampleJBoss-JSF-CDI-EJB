@@ -10,21 +10,27 @@
 		<h1>List Employees</h1>
 		<br />
 		<h:form id="form">
-			<p:dataTable id="dataTable" var="employe"
-				value="#{employeMB.findAll()}" style="width: 100%" editable="true">
+			<p:dataTable id="dataTable" var="mission"
+				value="#{missionMB.findAll()}" style="width: 100%" editable="true">
 
 				<p:column headerText="id">
-					<h:outputText value="#{employe.id}" />
+					<h:outputText value="#{mission.id}" />
 				</p:column>
 				<p:column headerText="nom">
-					<h:outputText value="#{employe.nom}" />
+					<h:outputText value="#{mission.nom}" />
 				</p:column>
-				<p:column headerText="prenom">
-					<h:outputText value="#{employe.prenom}" />
+				<p:column headerText="type">
+					<h:outputText value="#{mission.type}" />
+				</p:column>
+				<p:column headerText="duree">
+					<h:outputText value="#{mission.duree}" />
+				</p:column>
+				<p:column headerText="Employe">
+					<h:outputText value="#{mission.employe.id}" />
 				</p:column>
 
 				<p:column headerText="Action" colspan="2">
-					<h:commandLink action="#{employeMB.remove()}" value="Supp"></h:commandLink>
+					<h:commandLink action="#{missionMB.remove()}" value="Supp"></h:commandLink>
 				</p:column>
 			</p:dataTable>
 

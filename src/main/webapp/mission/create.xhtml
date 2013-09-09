@@ -7,7 +7,7 @@
 
 	<ui:param name="employeActive" value="active" />
 	<ui:define name="body">
-		<h1>Index Employees Create</h1>
+		<h1>Index Mission Create</h1>
 		<br />
 		<h:form class="form-horizontal">
 
@@ -15,7 +15,7 @@
 				<h:outputLabel for="nom" value="Nom : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Nom" id="nom" value="#{employeMB.employe.nom}"
+					<h:inputText label="Nom" id="nom" value="#{missionMB.mission.nom}"
 						required="true" styleClass="form-control">
 						<f:validateLength minimum="3" />
 					</h:inputText>
@@ -23,37 +23,34 @@
 			</div>
 
 			<div class="form-group">
-				<h:outputLabel for="prenom" value="Prenom : "
+				<h:outputLabel for="type" value="Type : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Prenom" id="prenom"
-						value="#{employeMB.employe.prenom}" required="true"
+					<h:inputText label="Type" id="type"
+						value="#{missionMB.mission.type}" required="true"
 						styleClass="form-control">
-						<f:validateLength minimum="2" />
 					</h:inputText>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<h:outputLabel for="login" value="Login : "
+				<h:outputLabel for="duree" value="Duree : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Login" id="login"
-						value="#{employeMB.employe.login}" required="true"
+					<h:inputText label="Duree" id="duree"
+						value="#{missionMB.mission.duree}" required="true"
 						styleClass="form-control">
-						<f:validateLength minimum="5" />
 					</h:inputText>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<h:outputLabel for="password" value="Password : "
+				<h:outputLabel for="employe" value="Employe : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Password" id="password"
-						value="#{employeMB.employe.password}" required="true"
+					<h:inputText label="Employe" id="employe"
+						value="#{missionMB.mission.employe.id}" required="false"
 						styleClass="form-control">
-						<f:validateLength minimum="5" />
 					</h:inputText>
 				</div>
 			</div>
