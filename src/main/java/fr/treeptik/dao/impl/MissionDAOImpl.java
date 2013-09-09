@@ -46,7 +46,7 @@ public class MissionDAOImpl implements MissionDAO {
 	@Override
 	public void removeById(Integer id) throws DAOException {
 		try {
-			Query query = em.createQuery("DELETE FROM Employe emp WHERE emp.id = :id");
+			Query query = em.createQuery("DELETE FROM Mission mis WHERE mis.id = :id");
 			query.setParameter("id", id);
 			query.executeUpdate();
 		} catch (PersistenceException e) {

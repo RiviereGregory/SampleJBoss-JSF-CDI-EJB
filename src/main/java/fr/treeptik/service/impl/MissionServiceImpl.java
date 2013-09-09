@@ -44,7 +44,7 @@ public class MissionServiceImpl implements MissionService {
 
 	@Override
 	public void removeById(Integer id) throws ServiceException {
-		log.info("Removing employe id : " + id);
+		log.info("Removing mission id : " + id);
 		try {
 			dao.removeById(id);
 		} catch (DAOException e) {

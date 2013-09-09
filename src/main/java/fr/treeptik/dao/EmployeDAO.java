@@ -15,4 +15,6 @@ public interface EmployeDAO {
 
 	List<Employe> findAll() throws DAOException;
 
+	Employe findById(Integer id) throws DAOException;
+
 }

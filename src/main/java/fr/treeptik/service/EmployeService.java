@@ -15,4 +15,6 @@ public interface EmployeService {
 
 	List<Employe> findAll() throws ServiceException;
 
+	Employe findById(Integer id) throws ServiceException;
+
 }

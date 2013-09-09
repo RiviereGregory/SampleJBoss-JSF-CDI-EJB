@@ -55,4 +55,13 @@ public class EmployeDAOImpl implements EmployeDAO {
 
 	}
 
+	@Override
+	public Employe findById(Integer id) throws DAOException {
+		try {
+			return em.find(Employe.class, id);
+		} catch (PersistenceException e) {
+			throw new DAOException(e.getMessage(), e.getCause());
+		}
+	}
+
 }
