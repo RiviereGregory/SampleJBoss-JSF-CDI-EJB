@@ -9,23 +9,23 @@
 		<h1>List Employees</h1>
 		<br />
 		<h:form id="form">
-			<h:dataTable id="dataTable" var="employe"
+			<p:dataTable id="dataTable" var="employe"
 				value="#{employeMB.findAll()}" style="width: 100%" editable="true">
 
-				<h:column headerText="id">
+				<p:column headerText="id">
 					<h:outputText value="#{employe.id}" />
-				</h:column>
-				<h:column headerText="nom">
+				</p:column>
+				<p:column headerText="nom">
 					<h:outputText value="#{employe.nom}" />
-				</h:column>
-				<h:column headerText="prenom">
+				</p:column>
+				<p:column headerText="prenom">
 					<h:outputText value="#{employe.prenom}" />
-				</h:column>
+				</p:column>
 
-				<h:column headerText="Action" colspan="2">
+				<p:column headerText="Action" colspan="2">
 					<h:commandLink action="#{employeMB.remove()}" value="Supp"></h:commandLink>
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 
 		</h:form>
 

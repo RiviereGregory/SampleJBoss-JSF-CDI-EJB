@@ -1,1 +1,1 @@
-INSERT INTO Employe VALUES (1,'a.jones@matrix.com','Agent Jones','oO00Oo','Agent Jones');
+--INSERT INTO Employe VALUES (1,'a.jones@matrix.com','Agent Jones','oO00Oo','Agent Jones');

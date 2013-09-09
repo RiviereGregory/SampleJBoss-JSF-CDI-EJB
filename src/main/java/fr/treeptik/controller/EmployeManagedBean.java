@@ -28,7 +28,7 @@ public class EmployeManagedBean {
 		setEmploye(new Employe());
 	}
 
-	public void register() throws Exception {
+	public String register() throws Exception {
 		try {
 			employeService.register(getEmploye());
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!",
@@ -40,6 +40,7 @@ public class EmployeManagedBean {
 					"Registration unsuccessful");
 			facesContext.addMessage(null, m);
 		}
+		return "list";
 	}
 
 	public void remove() throws Exception {
