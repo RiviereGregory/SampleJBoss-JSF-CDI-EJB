@@ -48,6 +48,11 @@ public class MissionManagedBean {
 		return "list.jsf";
 	}
 
+	public String initMission() throws Exception {
+		// this.setMission(new Mission());
+		return "create.jsf";
+	}
+
 	public String register() throws Exception {
 		try {
 			missionService.register(getMission());

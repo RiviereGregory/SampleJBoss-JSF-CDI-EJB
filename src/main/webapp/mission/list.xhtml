@@ -16,10 +16,12 @@
 				<p:column headerText="id" sortBy="#{mission.id}">
 					<h:outputText value="#{mission.id}" />
 				</p:column>
-				<p:column headerText="nom" sortBy="#{mission.nom}">
+				<p:column headerText="nom" sortBy="#{mission.nom}"
+					filterBy="#{mission.nom}">
 					<h:outputText value="#{mission.nom}" />
 				</p:column>
-				<p:column headerText="type">
+				<p:column headerText="type" sortBy="#{mission.type}"
+					filterBy="#{mission.type}">
 					<h:outputText value="#{mission.type}" />
 				</p:column>
 				<p:column headerText="duree">

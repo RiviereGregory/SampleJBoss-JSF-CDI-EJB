@@ -13,7 +13,9 @@
 	<link
 		href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css"
 		rel="stylesheet" />
-
+	<link
+		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+		rel="stylesheet" />
 	<!-- Custom styles for this template -->
 	<link href="../css/employee-manager.css" rel="stylesheet" />
 </h:head>
@@ -39,9 +41,9 @@
 								class="glyphicon glyphicon-user"></span> Employe</a></li>
 						<li class="#{employesActive}"><a
 							href="/template-JSF-CDI-EJB/employee/#{employeMB.initListEmploye()}"><span
-								class="glyphicon glyphicon-user"></span> Employes</a></li>
+								class="glyphicon glyphicon-eye-open"></span> Employes</a></li>
 						<li class="#{missionActive}"><a
-							href="/template-JSF-CDI-EJB/mission/create.jsf"><span
+							href="/template-JSF-CDI-EJB/mission/#{missionMB.initMission()}"><span
 								class="glyphicon glyphicon-star"></span> Mission</a></li>
 						<li class="#{missionsActive}"><a
 							href="/template-JSF-CDI-EJB/mission/#{missionMB.initListMission()}"><span
