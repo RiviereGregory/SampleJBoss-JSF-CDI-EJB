@@ -36,24 +36,24 @@
 						<li class="#{indexActive}"><a
 							href="/template-JSF-CDI-EJB/index.jsf"><span
 								class="glyphicon glyphicon-home"></span> Accueil</a></li>
-						<li class="#{employeActive}"><a
-							href="/template-JSF-CDI-EJB/employee/create.jsf"><span
-								class="glyphicon glyphicon-user"></span> Employe</a></li>
-						<li class="#{employesActive}"><a
-							href="/template-JSF-CDI-EJB/employee/#{employeMB.initListEmploye()}"><span
-								class="glyphicon glyphicon-eye-open"></span> Employes</a></li>
-						<li class="#{missionActive}"><a
-							href="/template-JSF-CDI-EJB/mission/#{missionMB.initMission()}"><span
-								class="glyphicon glyphicon-star"></span> Mission</a></li>
-						<li class="#{missionsActive}"><a
-							href="/template-JSF-CDI-EJB/mission/#{missionMB.initListMission()}"><span
-								class="glyphicon glyphicon-list-alt"></span> Missions</a></li>
-						<li class="#{adresseActive}"><a
-							href="/template-JSF-CDI-EJB/adresse/create.jsf"><span
-								class="glyphicon glyphicon-globe"></span> Adresse</a></li>
-						<li class="#{adressesActive}"><a
-							href="/template-JSF-CDI-EJB/adresse/#{adresseMB.initListAdresse()}"><span
-								class="glyphicon glyphicon-list"></span> Adresses</a></li>
+						<li class="#{employeActive}"><h:commandLink
+								action="#{employeMB.initEmploye()}" value="Employe"
+								styleClass="glyphicon glyphicon-user" /></li>
+						<li class="#{employesActive}"><h:commandLink
+								action="#{employeMB.initListEmploye()}" value="Employes"
+								styleClass="glyphicon glyphicon-eye-open" /></li>
+						<li class="#{missionActive}"><h:commandLink
+								action="#{missionMB.initMission()}" value="Mission"
+								styleClass="glyphicon glyphicon-star" /></li>
+						<li class="#{missionsActive}"><h:commandLink
+								action="#{missionMB.initListMission()}" value="Missions"
+								styleClass="glyphicon glyphicon-list-alt" /></li>
+						<li class="#{adresseActive}"><h:commandLink
+								action="#{adresseMB.initAdresse()}" value="Adresse"
+								styleClass="glyphicon glyphicon-globe" /></li>
+						<li class="#{adressesActive}"><h:commandLink
+								action="#{adresseMB.initListAdresse()}" value="Adresses"
+								styleClass="glyphicon glyphicon-list" /></li>
 					</ul>
 				</div>
 			</h:form>

@@ -56,7 +56,12 @@ public class EmployeManagedBean {
 	public String initListEmploye() throws Exception {
 		employes = new ListDataModel<Employe>();
 		employes.setWrappedData(employeService.findAll());
-		return "list.jsf";
+		return "/employee/list";
+	}
+
+	public String initEmploye() throws Exception {
+		init();
+		return "/employee/create";
 	}
 
 	public void remove() throws Exception {

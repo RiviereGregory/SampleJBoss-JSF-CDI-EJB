@@ -37,6 +37,7 @@ public class MissionManagedBean {
 
 	@PostConstruct
 	public void init() {
+
 		setMission(new Mission());
 		mission.setEmploye(new Employe());
 	}
@@ -45,12 +46,12 @@ public class MissionManagedBean {
 	public String initListMission() throws Exception {
 		missions = new ListDataModel<Mission>();
 		missions.setWrappedData(missionService.findAll());
-		return "list.jsf";
+		return "/mission/list";
 	}
 
 	public String initMission() throws Exception {
-		// this.setMission(new Mission());
-		return "create.jsf";
+		init();
+		return "/mission/create";
 	}
 
 	public String register() throws Exception {

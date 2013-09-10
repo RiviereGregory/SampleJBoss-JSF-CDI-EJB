@@ -35,6 +35,7 @@ public class AdresseManagedBean {
 
 	@PostConstruct
 	public void init() {
+		System.out.println("INIT");
 		setAdresse(new Adresse());
 		adresse.setEmploye(new Employe());
 	}
@@ -58,7 +59,12 @@ public class AdresseManagedBean {
 	public String initListAdresse() throws Exception {
 		adresses = new ListDataModel<Adresse>();
 		adresses.setWrappedData(adresseService.findAll());
-		return "list.jsf";
+		return "/adresse/list";
+	}
+
+	public String initAdresse() throws Exception {
+		init();
+		return "/adresse/create";
 	}
 
 	public void remove() throws Exception {
@@ -79,7 +85,7 @@ public class AdresseManagedBean {
 		adresseService.findById(adresse.getId());
 		System.out.println("Ville Adresse " + adresse.getVille());
 
-		return "create";
+		return "create.jsf";
 	}
 
 	public ListDataModel<Adresse> findAll() throws Exception {
