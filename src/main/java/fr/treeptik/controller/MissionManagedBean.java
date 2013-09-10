@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -19,6 +20,7 @@ import fr.treeptik.model.TypeMission;
 import fr.treeptik.service.MissionService;
 
 @ManagedBean(name = "missionMB")
+@SessionScoped
 public class MissionManagedBean {
 
 	@Inject
@@ -39,6 +41,13 @@ public class MissionManagedBean {
 		mission.setEmploye(new Employe());
 	}
 
+	// Permet d'initialiser la liste qui sera utiliser dans les datatables de primefaces
+	public String initListMission() throws Exception {
+		missions = new ListDataModel<Mission>();
+		missions.setWrappedData(missionService.findAll());
+		return "list.jsf";
+	}
+
 	public String register() throws Exception {
 		try {
 			missionService.register(getMission());
@@ -51,7 +60,7 @@ public class MissionManagedBean {
 					"Registration unsuccessful");
 			facesContext.addMessage(null, m);
 		}
-		return "list";
+		return initListMission();
 	}
 
 	public void remove() throws Exception {
@@ -76,15 +85,17 @@ public class MissionManagedBean {
 	}
 
 	public ListDataModel<Mission> findAll() throws Exception {
-		missions = new ListDataModel<>();
+		// Pour primeface sortBy pour avoir une liste fixe
 
-		try {
-			missions.setWrappedData(missionService.findAll());
-		} catch (Exception e) {
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
-					"FindAll unsuccessful");
-			facesContext.addMessage(null, m);
-		}
+		// missions = new ListDataModel<>();
+		//
+		// try {
+		// missions.setWrappedData(missionService.findAll());
+		// } catch (Exception e) {
+		// FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
+		// "FindAll unsuccessful");
+		// facesContext.addMessage(null, m);
+		// }
 
 		return missions;
 	}
