@@ -1,12 +1,17 @@
 package fr.treeptik.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
+import fr.treeptik.exception.ServiceException;
 import fr.treeptik.model.Employe;
 import fr.treeptik.service.EmployeService;
 
@@ -22,6 +27,8 @@ public class EmployeManagedBean {
 	private Employe employe;
 
 	private ListDataModel<Employe> employes = new ListDataModel<>();
+
+	private List<SelectItem> selectEmploye = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
@@ -90,6 +97,23 @@ public class EmployeManagedBean {
 
 	public void setEmployes(ListDataModel<Employe> employes) {
 		this.employes = employes;
+	}
+
+	public List<SelectItem> getSelectEmploye() throws ServiceException {
+
+		List<Employe> allEmploye = employeService.findAll();
+		selectEmploye.clear();
+		for (Employe employe : allEmploye) {
+
+			selectEmploye.add(new SelectItem(employe.getId(), employe.getNom() + " - "
+					+ employe.getPrenom()));
+		}
+
+		return selectEmploye;
+	}
+
+	public void setSelectEmploye(List<SelectItem> selectEmploye) {
+		this.selectEmploye = selectEmploye;
 	}
 
 }

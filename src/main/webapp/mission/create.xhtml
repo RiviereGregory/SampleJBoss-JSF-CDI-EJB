@@ -48,10 +48,10 @@
 				<h:outputLabel for="employe" value="Employe : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Employe" id="employe"
-						value="#{missionMB.mission.employe.id}" required="false"
-						styleClass="form-control">
-					</h:inputText>
+					<h:selectOneMenu value="#{missionMB.mission.employe.id}"
+						required="true">
+						<f:selectItems value="#{employeMB.selectEmploye}" />
+					</h:selectOneMenu>
 				</div>
 			</div>
 
