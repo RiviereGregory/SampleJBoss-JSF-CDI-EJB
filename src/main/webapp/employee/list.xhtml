@@ -13,10 +13,10 @@
 			<p:dataTable id="dataTable" var="employe"
 				value="#{employeMB.findAll()}" style="width: 100%" editable="true">
 
-				<p:column headerText="id">
+				<p:column headerText="id" sortBy="#{employe.id}">
 					<h:outputText value="#{employe.id}" />
 				</p:column>
-				<p:column headerText="nom">
+				<p:column headerText="nom" sortBy="#{employe.nom}">
 					<h:outputText value="#{employe.nom}" />
 				</p:column>
 				<p:column headerText="prenom">

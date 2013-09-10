@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -16,6 +17,7 @@ import fr.treeptik.model.Employe;
 import fr.treeptik.service.EmployeService;
 
 @ManagedBean(name = "employeMB")
+@SessionScoped
 public class EmployeManagedBean {
 
 	@Inject
@@ -47,7 +49,14 @@ public class EmployeManagedBean {
 					"Registration unsuccessful");
 			facesContext.addMessage(null, m);
 		}
-		return "list";
+		return initListEmploye();
+	}
+
+	// Permet d'initialiser la liste qui sera utiliser dans les datatables de primefaces
+	public String initListEmploye() throws Exception {
+		employes = new ListDataModel<Employe>();
+		employes.setWrappedData(employeService.findAll());
+		return "list.jsf";
 	}
 
 	public void remove() throws Exception {
@@ -72,15 +81,17 @@ public class EmployeManagedBean {
 	}
 
 	public ListDataModel<Employe> findAll() throws Exception {
-		employes = new ListDataModel<>();
+		// ATTENTION Il faut pas le mettre car on a besoin d'une list static
 
-		try {
-			employes.setWrappedData(employeService.findAll());
-		} catch (Exception e) {
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
-					"FindAll unsuccessful");
-			facesContext.addMessage(null, m);
-		}
+		// employes = new ListDataModel<>();
+		//
+		// try {
+		// employes.setWrappedData(employeService.findAll());
+		// } catch (Exception e) {
+		// FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
+		// "FindAll unsuccessful");
+		// facesContext.addMessage(null, m);
+		// }
 
 		return employes;
 	}
