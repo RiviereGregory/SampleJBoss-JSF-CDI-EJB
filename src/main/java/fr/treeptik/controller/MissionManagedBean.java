@@ -49,10 +49,6 @@ public class MissionManagedBean {
 		try {
 			mission = missions.getRowData();
 			missionService.removeById(mission.getId());
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Removed!",
-					"Remove successful");
-			facesContext.addMessage(null, m);
-			init();
 		} catch (Exception e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
 					"Remove unsuccessful");
@@ -65,10 +61,6 @@ public class MissionManagedBean {
 
 		try {
 			missions.setWrappedData(missionService.findAll());
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "FindAll!",
-					"FindAll successful");
-			facesContext.addMessage(null, m);
-			init();
 		} catch (Exception e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
 					"FindAll unsuccessful");

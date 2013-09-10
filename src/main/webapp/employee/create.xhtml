@@ -11,6 +11,8 @@
 		<br />
 		<h:form class="form-horizontal">
 
+			<!-- ATTENTION il faut le id pour pouvoir faire un update dans la base est pas un persist -->
+			<h:inputHidden value="#{employeMB.employe.id}" />
 			<div class="form-group">
 				<h:outputLabel for="nom" value="Nom : "
 					styleClass="col-lg-2 control-label" />

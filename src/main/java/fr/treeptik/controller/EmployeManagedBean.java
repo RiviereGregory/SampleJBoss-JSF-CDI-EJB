@@ -54,10 +54,6 @@ public class EmployeManagedBean {
 		try {
 			employe = employes.getRowData();
 			employeService.removeById(employe.getId());
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Removed!",
-					"Remove successful");
-			facesContext.addMessage(null, m);
-			init();
 		} catch (Exception e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
 					"Remove unsuccessful");
@@ -65,15 +61,21 @@ public class EmployeManagedBean {
 		}
 	}
 
+	public String modify() throws ServiceException {
+
+		employe = employes.getRowData();
+		System.out.println("Id employe " + employe.getId());
+		employeService.findById(employe.getId());
+		System.out.println("Nom employe " + employe.getNom());
+
+		return "create";
+	}
+
 	public ListDataModel<Employe> findAll() throws Exception {
 		employes = new ListDataModel<>();
 
 		try {
 			employes.setWrappedData(employeService.findAll());
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "FindAll!",
-					"FindAll successful");
-			facesContext.addMessage(null, m);
-			init();
 		} catch (Exception e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getLocalizedMessage(),
 					"FindAll unsuccessful");

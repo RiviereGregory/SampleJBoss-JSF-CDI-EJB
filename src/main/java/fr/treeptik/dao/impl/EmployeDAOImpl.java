@@ -25,7 +25,8 @@ public class EmployeDAOImpl implements EmployeDAO {
 	@Override
 	public void register(Employe employe) throws DAOException {
 		log.info("Registering " + employe.getNom());
-		em.persist(employe);
+		// em.persist(employe);
+		em.merge(employe);
 	}
 
 	@Override
