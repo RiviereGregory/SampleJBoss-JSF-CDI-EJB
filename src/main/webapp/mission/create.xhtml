@@ -26,10 +26,9 @@
 				<h:outputLabel for="type" value="Type : "
 					styleClass="col-lg-2 control-label" />
 				<div class="col-lg-6">
-					<h:inputText label="Type" id="type"
-						value="#{missionMB.mission.type}" required="true"
-						styleClass="form-control">
-					</h:inputText>
+					<h:selectOneMenu value="#{missionMB.mission.type}" required="true">
+						<f:selectItems value="#{missionMB.selectType}" />
+					</h:selectOneMenu>
 				</div>
 			</div>
 

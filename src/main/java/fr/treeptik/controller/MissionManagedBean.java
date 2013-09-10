@@ -1,15 +1,21 @@
 package fr.treeptik.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.model.Employe;
 import fr.treeptik.model.Mission;
+import fr.treeptik.model.TypeMission;
 import fr.treeptik.service.MissionService;
 
 @ManagedBean(name = "missionMB")
@@ -24,6 +30,8 @@ public class MissionManagedBean {
 	private Mission mission;
 
 	private ListDataModel<Mission> missions = new ListDataModel<>();
+
+	private List<SelectItem> selectType = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
@@ -95,6 +103,20 @@ public class MissionManagedBean {
 
 	public void setMissions(ListDataModel<Mission> missions) {
 		this.missions = missions;
+	}
+
+	public List<SelectItem> getSelectType() {
+		List<TypeMission> allType = Arrays.asList(TypeMission.values());
+		selectType.clear();
+		for (TypeMission typeMission : allType) {
+			selectType.add(new SelectItem(typeMission.toString(), typeMission.toString()));
+		}
+
+		return selectType;
+	}
+
+	public void setSelectType(List<SelectItem> selectType) {
+		this.selectType = selectType;
 	}
 
 }
