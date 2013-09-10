@@ -22,13 +22,14 @@ public class AdresseServiceImpl implements AdresseService {
 	private AdresseDAO dao;
 
 	@Override
-	public void register(Adresse adresse) throws ServiceException {
+	public Adresse register(Adresse adresse) throws ServiceException {
 		log.info("Registering " + adresse.getVille());
 		try {
-			dao.register(adresse);
+			adresse = dao.register(adresse);
 		} catch (DAOException e) {
 			throw new ServiceException(e.getMessage(), e.getCause());
 		}
+		return adresse;
 	}
 
 	@Override

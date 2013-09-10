@@ -22,13 +22,14 @@ public class MissionServiceImpl implements MissionService {
 	private MissionDAO dao;
 
 	@Override
-	public void register(Mission mission) throws ServiceException {
+	public Mission register(Mission mission) throws ServiceException {
 		log.info("Registering " + mission.getNom());
 		try {
-			dao.register(mission);
+			mission = dao.register(mission);
 		} catch (DAOException e) {
 			throw new ServiceException(e.getMessage(), e.getCause());
 		}
+		return mission;
 	}
 
 	@Override

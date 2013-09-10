@@ -7,7 +7,7 @@ import fr.treeptik.model.Employe;
 
 public interface EmployeService {
 
-	void register(Employe employe) throws ServiceException;
+	Employe register(Employe employe) throws ServiceException;
 
 	void remove(Employe employe) throws ServiceException;
 

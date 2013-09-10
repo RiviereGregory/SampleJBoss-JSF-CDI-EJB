@@ -7,7 +7,7 @@ import fr.treeptik.model.Adresse;
 
 public interface AdresseService {
 
-	void register(Adresse adresse) throws ServiceException;
+	Adresse register(Adresse adresse) throws ServiceException;
 
 	void remove(Adresse adresse) throws ServiceException;
 

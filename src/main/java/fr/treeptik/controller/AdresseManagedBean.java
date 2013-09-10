@@ -85,7 +85,7 @@ public class AdresseManagedBean {
 		adresseService.findById(adresse.getId());
 		System.out.println("Ville Adresse " + adresse.getVille());
 
-		return "create.jsf";
+		return "create";
 	}
 
 	public ListDataModel<Adresse> findAll() throws Exception {

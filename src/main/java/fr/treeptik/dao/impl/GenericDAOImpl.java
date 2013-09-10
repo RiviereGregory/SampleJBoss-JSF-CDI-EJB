@@ -28,7 +28,7 @@ public class GenericDAOImpl<T, PK> implements GenericDAO<T, PK> {
 	@Override
 	public T register(T entite) throws DAOException {
 		try {
-			em.merge(entite);
+			entite = em.merge(entite);
 		} catch (PersistenceException e) {
 			throw new DAOException(e.getMessage(), e.getCause());
 		}

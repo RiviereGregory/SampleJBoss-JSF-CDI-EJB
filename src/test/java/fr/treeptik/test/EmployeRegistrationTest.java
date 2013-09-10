@@ -33,35 +33,39 @@ import org.junit.runner.RunWith;
 
 import fr.treeptik.model.Employe;
 import fr.treeptik.service.EmployeService;
-import fr.treeptik.service.impl.EmployeServiceImpl;
-import fr.treeptik.util.Resources;
 
 @RunWith(Arquillian.class)
 public class EmployeRegistrationTest {
-    @Deployment
-    public static Archive<?> createTestArchive() {
-        return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(Employe.class, EmployeServiceImpl.class, Resources.class)
-                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                // Deploy our test datasource
-                .addAsWebInfResource("test-ds.xml");
-    }
+	@Deployment
+	public static Archive<?> createTestArchive() {
+		WebArchive webArchive = ShrinkWrap.create(WebArchive.class, "test.war")
+				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				// Deploy our test datasource
+				.addAsWebInfResource("test-ds.xml");
 
-    @Inject
-    EmployeService memberRegistration;
+		webArchive.addPackages(true, "fr.treeptik");
 
-    @Inject
-    Logger log;
+		return webArchive;
+	}
 
-    @Test
-    public void testRegister() throws Exception {
-        Employe newMember = new Employe();
-        newMember.setNom("Jane Doe");
-        newMember.setLogin("jane@mailinator.com");
-        memberRegistration.register(newMember);
-        assertNotNull(newMember.getId());
-        log.info(newMember.getLogin() + " was persisted with id " + newMember.getId());
-    }
+	@Inject
+	EmployeService memberRegistration;
+
+	@Inject
+	Logger log;
+
+	@Test
+	public void testRegister() throws Exception {
+		Employe newMember = new Employe();
+		newMember.setNom("Jane Doe");
+		newMember.setLogin("jane@mailinator.com");
+		newMember = memberRegistration.register(newMember);
+
+		log.info("MemberRegistration : " + memberRegistration);
+
+		assertNotNull(newMember.getId());
+		log.info(newMember.getLogin() + " was persisted with id " + newMember.getId());
+	}
 
 }

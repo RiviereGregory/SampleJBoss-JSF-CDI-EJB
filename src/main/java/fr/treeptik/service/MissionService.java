@@ -7,7 +7,7 @@ import fr.treeptik.model.Mission;
 
 public interface MissionService {
 
-	void register(Mission mission) throws ServiceException;
+	Mission register(Mission mission) throws ServiceException;
 
 	void remove(Mission mission) throws ServiceException;
 

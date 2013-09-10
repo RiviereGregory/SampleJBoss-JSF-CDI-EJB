@@ -22,13 +22,14 @@ public class EmployeServiceImpl implements EmployeService {
 	private EmployeDAO dao;
 
 	@Override
-	public void register(Employe employe) throws ServiceException {
+	public Employe register(Employe employe) throws ServiceException {
 		log.info("Registering " + employe.getNom());
 		try {
-			dao.register(employe);
+			employe = dao.register(employe);
 		} catch (DAOException e) {
 			throw new ServiceException(e.getMessage(), e.getCause());
 		}
+		return employe;
 	}
 
 	@Override
