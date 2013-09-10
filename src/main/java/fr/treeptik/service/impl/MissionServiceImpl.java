@@ -62,4 +62,13 @@ public class MissionServiceImpl implements MissionService {
 		}
 	}
 
+	@Override
+	public Mission findById(Integer id) throws ServiceException {
+		try {
+			return dao.findById(id);
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage(), e.getCause());
+		}
+	}
+
 }

@@ -15,4 +15,6 @@ public interface MissionService {
 
 	List<Mission> findAll() throws ServiceException;
 
+	Mission findById(Integer id) throws ServiceException;
+
 }

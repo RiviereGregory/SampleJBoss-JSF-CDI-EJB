@@ -15,4 +15,6 @@ public interface MissionDAO {
 
 	List<Mission> findAll() throws DAOException;
 
+	Mission findById(Integer id) throws DAOException;
+
 }

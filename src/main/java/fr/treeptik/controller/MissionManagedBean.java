@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
+import fr.treeptik.exception.ServiceException;
 import fr.treeptik.model.Employe;
 import fr.treeptik.model.Mission;
 import fr.treeptik.service.MissionService;
@@ -54,6 +55,16 @@ public class MissionManagedBean {
 					"Remove unsuccessful");
 			facesContext.addMessage(null, m);
 		}
+	}
+
+	public String modify() throws ServiceException {
+
+		mission = missions.getRowData();
+		System.out.println("Id mission " + mission.getId());
+		missionService.findById(mission.getId());
+		System.out.println("Nom mission " + mission.getNom());
+
+		return "create";
 	}
 
 	public ListDataModel<Mission> findAll() throws Exception {
