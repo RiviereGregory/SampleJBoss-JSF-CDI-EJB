@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/default.xhtml">
+
+	<ui:param name="adresseActive" value="active" />
+	<ui:define name="body">
+		<h1>Index Mission Create</h1>
+		<br />
+		<h:form class="form-horizontal">
+			<h:inputHidden value="#{adresseMB.adresse.id}" />
+			<div class="form-group">
+				<h:outputLabel for="ville" value="Ville : "
+					styleClass="col-lg-2 control-label" />
+				<div class="col-lg-6">
+					<h:inputText label="Ville" id="ville"
+						value="#{adresseMB.adresse.ville}" required="true"
+						styleClass="form-control">
+						<f:validateLength minimum="3" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel for="codePostal" value="Code Postal : "
+					styleClass="col-lg-2 control-label" />
+				<div class="col-lg-6">
+					<h:inputText label="CodePostal" id="codePostal"
+						value="#{adresseMB.adresse.codePostal}" required="true"
+						styleClass="form-control">
+						<f:validateLength minimum="5" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel for="rue" value="Rue : "
+					styleClass="col-lg-2 control-label" />
+				<div class="col-lg-6">
+					<h:inputText label="Rue" id="rue" value="#{adresseMB.adresse.rue}"
+						required="true" styleClass="form-control">
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel for="employe" value="Employe : "
+					styleClass="col-lg-2 control-label" />
+				<div class="col-lg-6">
+					<h:selectOneMenu value="#{adresseMB.adresse.employe.id}"
+						required="true">
+						<f:selectItems value="#{employeMB.selectEmploye}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-6">
+					<h:commandButton id="create" value="Ajouter"
+						action="#{adresseMB.register()}" ajax="false"
+						styleClass="btn btn-primary" />
+				</div>
+			</div>
+
+			<h:messages />
+
+		</h:form>
+	</ui:define>
+</ui:composition>

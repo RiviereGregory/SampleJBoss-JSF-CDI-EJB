@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/default.xhtml">
+
+	<ui:param name="adressesActive" value="active" />
+	<ui:define name="body">
+		<h1>List Missions</h1>
+		<br />
+		<h:form id="form">
+			<p:dataTable id="dataTable" var="adresse"
+				value="#{adresseMB.findAll()}" style="width: 100%" editable="true">
+
+				<p:column headerText="id" sortBy="#{adresse.id}">
+					<h:outputText value="#{adresse.id}" />
+				</p:column>
+				<p:column headerText="ville" sortBy="#{adresse.ville}"
+					filterBy="#{adresse.ville}">
+					<h:outputText value="#{adresse.ville}" />
+				</p:column>
+				<p:column headerText="codePostal" sortBy="#{adresse.codePostal}"
+					filterBy="#{adresse.codePostal}">
+					<h:outputText value="#{adresse.codePostal}" />
+				</p:column>
+				<p:column headerText="rue">
+					<h:outputText value="#{adresse.rue}" />
+				</p:column>
+				<p:column headerText="Employe">
+					<h:outputText value="#{adresse.employe.id}" />
+				</p:column>
+
+				<p:column headerText="Action" colspan="2">
+					<h:commandLink action="#{adresseMB.remove()}" value="Supp"></h:commandLink>
+					<td><h:commandLink action="#{adresseMB.modify()}"
+							value="Modify"></h:commandLink></td>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
