@@ -36,6 +36,7 @@ import fr.treeptik.service.EmployeService;
 
 @RunWith(Arquillian.class)
 public class EmployeRegistrationTest {
+	// Permet de deployer sur un serveur virtuel
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		WebArchive webArchive = ShrinkWrap.create(WebArchive.class, "test.war")
@@ -44,6 +45,7 @@ public class EmployeRegistrationTest {
 				// Deploy our test datasource
 				.addAsWebInfResource("test-ds.xml");
 
+		// Ajoute toute les classes on peut utiliser seulement quelques classes avec addClass
 		webArchive.addPackages(true, "fr.treeptik");
 
 		return webArchive;
