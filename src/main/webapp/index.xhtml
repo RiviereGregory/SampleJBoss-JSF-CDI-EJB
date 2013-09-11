@@ -9,16 +9,12 @@
 	<ui:define name="body">
 		<h:form class="form-horizontal">
 
-			<div class="form-group">
+			<div class="form-group text-center">
 				<img border="0" src="images/missions.jpg" alt="Mission" width="800"
 					height="600" />
 			</div>
-			<div class="form-group">
-				<h:outputText value="#{MeteoMB.city} "
-					styleClass="col-lg-2 control-label" />
-				<h:outputText
-					value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C"
-					styleClass="col-lg-2 control-label" />
+			<div class="form-group text-center">
+				<h:outputText value="#{MeteoMB.city} : #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
 				<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
 					width="128" height="128" />
 			</div>

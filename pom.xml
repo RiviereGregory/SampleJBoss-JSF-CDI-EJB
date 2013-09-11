@@ -194,6 +194,14 @@
 			<version>1.4</version>
 		</dependency>
 
+		<!-- Pour utiliser HttpServlet pour recuperer IP -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -239,7 +247,7 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			
+
 			<dependencies>
 				<dependency>
 					<groupId>org.jboss.as</groupId>
@@ -247,7 +255,7 @@
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
-			
+
 			<build>
 				<plugins>
 					<plugin>

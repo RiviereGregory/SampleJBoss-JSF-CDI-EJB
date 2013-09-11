@@ -1,5 +1,6 @@
 package fr.treeptik.controller;
 
+import java.net.InetAddress;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,9 @@ import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.treeptik.wsimport.WeatherReturn;
 import fr.treeptik.wsimport.WeatherSoap;
@@ -20,20 +23,41 @@ public class MeteoManagedBean {
 	@Inject
 	WeatherSoap soap;
 
+	@Inject
+	private FacesContext facesContext;
+
 	private String city;
 
 	private String temperature;
 
 	private Short weatherId;
 
+	private String ipAddress;
+
+	private String ipAddressClient;
+
 	private List<String> zipCode = new ArrayList<>();
 
 	@PostConstruct
-	public void init() {
+	public void init() throws Exception {
 		System.out.println("INIT");
+
 		initListZipCode();
 		Random random = new Random();
 		String zip = zipCode.get(random.nextInt(zipCode.size()));
+
+		// Permet de récupérer l'addresse IP du serveur
+		InetAddress host = InetAddress.getLocalHost();
+		ipAddress = host.getHostAddress();
+		System.out.println("IP : " + ipAddress);
+
+		// Permet de recupérer l'adresse client
+		facesContext = FacesContext.getCurrentInstance();
+		HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext()
+				.getRequest();
+		ipAddressClient = request.getRemoteAddr();
+		System.out.println("IP Client : " + ipAddressClient);
+
 		WeatherReturn cityWeatherByZIP = soap.getCityWeatherByZIP(zip);
 		city = cityWeatherByZIP.getCity();
 		temperature = cityWeatherByZIP.getTemperature();
@@ -188,6 +212,22 @@ public class MeteoManagedBean {
 
 	public void setZipCode(List<String> zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
+	public String getIpAddressClient() {
+		return ipAddressClient;
+	}
+
+	public void setIpAddressClient(String ipAddressClient) {
+		this.ipAddressClient = ipAddressClient;
 	}
 
 }
