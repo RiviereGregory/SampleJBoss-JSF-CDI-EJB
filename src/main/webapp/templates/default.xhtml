@@ -8,16 +8,16 @@
 	<title>Welcome to Employee-manager Project</title>
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet"
-		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css" />
 
 	<link
 		href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css"
 		rel="stylesheet" />
-	<link
-		href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-		rel="stylesheet" />
 	<!-- Custom styles for this template -->
-	<link href="../css/employee-manager.css" rel="stylesheet" />
+	<!-- 	#{facesContext.externalContext.requestContextPath} permet de mettre le dossier du projet deployer -->
+	<link
+		href="#{facesContext.externalContext.requestContextPath}/css/employee-manager.css"
+		rel="stylesheet" />
 </h:head>
 <h:body>
 	<div class="navbar navbar-fixed-top">
@@ -54,8 +54,13 @@
 						<li class="#{adressesActive}"><h:commandLink
 								action="#{adresseMB.initListAdresse()}" value="Adresses"
 								styleClass="glyphicon glyphicon-list" /></li>
+
+					</ul>
+					<ul class="navbar-text pull-right">
 						<li>#{MeteoMB.changeVille()}<h:outputText
-								value="#{MeteoMB.city} " /> <h:outputText
+								value="#{MeteoMB.city} " />
+						</li>
+						<li><h:outputText
 								value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
 							<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
 							width="20" height="20" /></li>
