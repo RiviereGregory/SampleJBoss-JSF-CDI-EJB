@@ -17,6 +17,10 @@
 			<h:outputText value="#{MeteoMB.city} " />
 			<h:outputText
 				value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
+			<div>
+				<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
+					width="128" height="128" />
+			</div>
 
 		</h:form>
 	</ui:define>

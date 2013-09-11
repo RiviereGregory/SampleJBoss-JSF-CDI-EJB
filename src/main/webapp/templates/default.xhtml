@@ -56,7 +56,9 @@
 								styleClass="glyphicon glyphicon-list" /></li>
 						<li><h:outputText value="#{MeteoMB.city} " /> <h:outputText
 								value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
-						</li>
+							<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
+							width="20" height="20" /></li>
+
 					</ul>
 				</div>
 			</h:form>
