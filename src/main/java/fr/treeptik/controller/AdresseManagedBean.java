@@ -67,7 +67,7 @@ public class AdresseManagedBean {
 		return "/adresse/create";
 	}
 
-	public void remove() throws Exception {
+	public String remove() throws Exception {
 		try {
 			adresse = adresses.getRowData();
 			adresseService.removeById(adresse.getId());
@@ -76,6 +76,7 @@ public class AdresseManagedBean {
 					"Remove unsuccessful");
 			facesContext.addMessage(null, m);
 		}
+		return initListAdresse();
 	}
 
 	public String modify() throws ServiceException {

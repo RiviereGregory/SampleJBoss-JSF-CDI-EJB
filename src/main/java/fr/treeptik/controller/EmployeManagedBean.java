@@ -64,7 +64,7 @@ public class EmployeManagedBean {
 		return "/employee/create";
 	}
 
-	public void remove() throws Exception {
+	public String remove() throws Exception {
 		try {
 			employe = employes.getRowData();
 			employeService.removeById(employe.getId());
@@ -73,6 +73,8 @@ public class EmployeManagedBean {
 					"Remove unsuccessful");
 			facesContext.addMessage(null, m);
 		}
+
+		return initListEmploye();
 	}
 
 	public String modify() throws ServiceException {

@@ -69,7 +69,7 @@ public class MissionManagedBean {
 		return initListMission();
 	}
 
-	public void remove() throws Exception {
+	public String remove() throws Exception {
 		try {
 			mission = missions.getRowData();
 			missionService.removeById(mission.getId());
@@ -78,6 +78,8 @@ public class MissionManagedBean {
 					"Remove unsuccessful");
 			facesContext.addMessage(null, m);
 		}
+
+		return initListMission();
 	}
 
 	public String modify() throws ServiceException {
