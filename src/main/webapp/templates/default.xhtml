@@ -56,16 +56,18 @@
 								styleClass="glyphicon glyphicon-list" /></li>
 
 					</ul>
-					<ul class="navbar-text pull-right">
-						<li>#{MeteoMB.changeVille()}<h:outputText
-								value="#{MeteoMB.city} " />
-						</li>
-						<li><h:outputText
-								value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
-							<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
-							width="20" height="20" /></li>
+					<p class="navbar-text pull-right">
 
-					</ul>
+						#{MeteoMB.changeVille()}
+						<h:outputText value="#{MeteoMB.city} " />
+						<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
+							width="20" height="20" /> <br />
+
+						<h:outputText
+							value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
+
+
+					</p>
 				</div>
 			</h:form>
 			<!--/.nav-collapse -->
