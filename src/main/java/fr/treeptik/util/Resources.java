@@ -25,6 +25,9 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.treeptik.wsimport.Weather;
+import fr.treeptik.wsimport.WeatherSoap;
+
 public class Resources {
 
 	// Produces permet de pouvoir injecter tous les types autre que EJB
@@ -42,6 +45,15 @@ public class Resources {
 	@RequestScoped
 	public FacesContext produceFacesContext() {
 		return FacesContext.getCurrentInstance();
+	}
+
+	@Produces
+	public WeatherSoap getMeteo() {
+		Weather service = new Weather();
+
+		WeatherSoap weatherSoap = service.getWeatherSoap();
+
+		return weatherSoap;
 	}
 
 }

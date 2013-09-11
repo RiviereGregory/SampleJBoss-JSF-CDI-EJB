@@ -54,11 +54,15 @@
 						<li class="#{adressesActive}"><h:commandLink
 								action="#{adresseMB.initListAdresse()}" value="Adresses"
 								styleClass="glyphicon glyphicon-list" /></li>
+						<li><h:outputText value="#{MeteoMB.city} " /> <h:outputText
+								value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
+						</li>
 					</ul>
 				</div>
 			</h:form>
 			<!--/.nav-collapse -->
 		</div>
+
 	</div>
 
 	<div class="container">
