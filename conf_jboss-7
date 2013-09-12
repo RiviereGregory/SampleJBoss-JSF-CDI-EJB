@@ -1,0 +1,16 @@
+Il faut mettre dans le JBOSS_HOME/standalone/configuration/standalone.xml
+entre les balises : <subsystem xmlns="urn:jboss:domain:security:1.1"> et  <security-domains> 
+ 
+
+<security-domain name="servlet-security-quickstart" cache-type="default">
+    <authentication>
+        <login-module code="Database" flag="required">
+            <module-option name="dsJndiName" value="java:jboss/datasources/ApplicationDS"/>
+            <module-option name="principalsQuery" value="SELECT password FROM users WHERE nom = ?"/>
+            <module-option name="rolesQuery" value="SELECT role, 'Roles' FROM roles r WHERE r.nom = ?"/>
+        </login-module>
+    </authentication>
+</security-domain>
+
+
+pour la table qui est dans db.sql et la datasource de l'applications-ds.xml
