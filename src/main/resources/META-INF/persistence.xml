@@ -7,6 +7,8 @@
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
    <persistence-unit name="persistenceUnit">
 
+	<!-- Permet de savoir quel jndi utiliser et comment qui est config dans 
+		applications-ds.xml dans le web inf -->
       <jta-data-source>java:jboss/datasources/ApplicationDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
