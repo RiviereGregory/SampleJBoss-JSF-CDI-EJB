@@ -3,8 +3,11 @@ package fr.treeptik.service.impl;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
+import org.jboss.ejb3.annotation.SecurityDomain;
 
 import fr.treeptik.dao.AdresseDAO;
 import fr.treeptik.exception.DAOException;
@@ -13,6 +16,11 @@ import fr.treeptik.model.Adresse;
 import fr.treeptik.service.AdresseService;
 
 @Stateless
+// Def le role qui a le droit d'utiliser le service
+@RolesAllowed({ "ROLE_ADMIN" })
+// Def le domain de securite utilise par le serveur jboss qui est config dans son standalone et dans
+// le jboss-web.xml
+@SecurityDomain("servlet-security-quickstart")
 public class AdresseServiceImpl implements AdresseService {
 
 	@Inject

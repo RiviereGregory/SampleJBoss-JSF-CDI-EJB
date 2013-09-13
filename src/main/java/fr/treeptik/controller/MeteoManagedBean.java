@@ -108,7 +108,13 @@ public class MeteoManagedBean {
 	}
 
 	public String convertFtoC() {
-		double tempC = (Double.valueOf(temperature) - 32) / 1.8;
+		double tempC;
+
+		if (temperature.isEmpty()) {
+			tempC = 0;
+		} else {
+			tempC = (Double.valueOf(temperature) - 32) / 1.8;
+		}
 		DecimalFormat df = new DecimalFormat("#######.00");
 		// System.out.println(df.format(tempC));
 		return df.format(tempC);
