@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import fr.treeptik.wsimport.WeatherReturn;
 import fr.treeptik.wsimport.WeatherSoap;
 
-@ManagedBean(name = "MeteoMB")
+@ManagedBean(name = "meteoMB")
 @SessionScoped
 public class MeteoManagedBean {
 
@@ -58,27 +58,40 @@ public class MeteoManagedBean {
 		ipAddressClient = request.getRemoteAddr();
 		System.out.println("IP Client : " + ipAddressClient);
 
-		WeatherReturn cityWeatherByZIP = soap.getCityWeatherByZIP(zip);
-		city = cityWeatherByZIP.getCity();
-		temperature = cityWeatherByZIP.getTemperature();
-		weatherId = cityWeatherByZIP.getWeatherID();
-		System.out.println("Zip :" + zip);
-		System.out.println("Meteo : " + city);
-		System.out.println("Meteo Temp : " + temperature);
+		try {
+			WeatherReturn cityWeatherByZIP = soap.getCityWeatherByZIP(zip);
+			city = cityWeatherByZIP.getCity();
+			temperature = cityWeatherByZIP.getTemperature();
+			weatherId = cityWeatherByZIP.getWeatherID();
+			System.out.println("Zip :" + zip);
+			System.out.println("Meteo : " + city);
+			System.out.println("Meteo Temp : " + temperature);
+		} catch (Exception e) {
+			city = "City";
+			temperature = "0";
+			weatherId = 1;
+
+		}
 
 	}
 
 	public void changeVille() {
 		initListZipCode();
 		Random random = new Random();
-		String zip = zipCode.get(random.nextInt(zipCode.size()));
-		WeatherReturn cityWeatherByZIP = soap.getCityWeatherByZIP(zip);
-		city = cityWeatherByZIP.getCity();
-		temperature = cityWeatherByZIP.getTemperature();
-		weatherId = cityWeatherByZIP.getWeatherID();
-		System.out.println("Zip :" + zip);
-		System.out.println("Meteo : " + city);
-		System.out.println("Meteo Temp : " + temperature);
+		try {
+			String zip = zipCode.get(random.nextInt(zipCode.size()));
+			WeatherReturn cityWeatherByZIP = soap.getCityWeatherByZIP(zip);
+			city = cityWeatherByZIP.getCity();
+			temperature = cityWeatherByZIP.getTemperature();
+			weatherId = cityWeatherByZIP.getWeatherID();
+			System.out.println("Zip :" + zip);
+			System.out.println("Meteo : " + city);
+			System.out.println("Meteo Temp : " + temperature);
+		} catch (Exception e) {
+			city = "City";
+			temperature = "0";
+			weatherId = 1;
+		}
 	}
 
 	public void initListZipCode() {

@@ -54,18 +54,20 @@
 						<li class="#{adressesActive}"><h:commandLink
 								action="#{adresseMB.initListAdresse()}" value="Adresses"
 								styleClass="glyphicon glyphicon-list" /></li>
+						<li><h:commandLink action="#{userMB.logout()}" value="Logout"
+								styleClass="glyphicon glyphicon-remove-sign" /></li>
 
 					</ul>
 					<p class="navbar-text pull-right">
 
-						#{MeteoMB.changeVille()}
-						<h:outputText value="#{MeteoMB.city} " />
-						<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
+						#{meteoMB.changeVille()}
+						<h:outputText value="#{meteoMB.city} " />
+						<img border="0" src="#{meteoMB.iconeMeteo()}" alt="meteo"
 							width="20" height="20" /> <br />
 						<h:outputText
-							value=" #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
+							value=" #{meteoMB.temperature}F - #{meteoMB.convertFtoC()}C" />
 						<br />
-						<h:outputText value=" #{MeteoMB.ipAddressClient}" />
+						<h:outputText value=" #{meteoMB.ipAddressClient}" />
 
 					</p>
 				</div>

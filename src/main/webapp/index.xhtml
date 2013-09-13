@@ -14,10 +14,12 @@
 					height="600" />
 			</div>
 			<div class="form-group text-center">
-				<h:outputText value="#{MeteoMB.city} : #{MeteoMB.temperature}F - #{MeteoMB.convertFtoC()}C" />
-				<img border="0" src="#{MeteoMB.iconeMeteo()}" alt="Meteo"
+				<h:outputText
+					value="#{meteoMB.city} : #{meteoMB.temperature}F - #{meteoMB.convertFtoC()}C" />
+				<img border="0" src="#{meteoMB.iconeMeteo()}" alt="meteo"
 					width="128" height="128" />
 			</div>
+
 		</h:form>
 	</ui:define>
 </ui:composition>
