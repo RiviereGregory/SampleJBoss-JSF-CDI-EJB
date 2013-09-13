@@ -49,11 +49,16 @@ public class Resources {
 
 	@Produces
 	public WeatherSoap getMeteo() {
-		Weather service = new Weather();
+		try {
+			Weather service = new Weather();
 
-		WeatherSoap weatherSoap = service.getWeatherSoap();
+			WeatherSoap weatherSoap = service.getWeatherSoap();
 
-		return weatherSoap;
+			return weatherSoap;
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 
 }

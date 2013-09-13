@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 @SessionScoped
 public class UserManagedBean {
 
-	public void logout() throws Exception {
+	public String logout() throws Exception {
 		// FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
 		// return "/index?faces-redirect=true";
 
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
@@ -24,13 +25,13 @@ public class UserManagedBean {
 		if (session != null) {
 			session.invalidate();
 		}
-		FacesContext
-				.getCurrentInstance()
-				.getApplication()
-				.getNavigationHandler()
-				.handleNavigation(FacesContext.getCurrentInstance(), null,
-						"/index.jsf?faces-redirect=true");
-
+		// FacesContext
+		// .getCurrentInstance()
+		// .getApplication()
+		// .getNavigationHandler()
+		// .handleNavigation(FacesContext.getCurrentInstance(), null,
+		// "/index.jsf?faces-redirect=true");
+		return "logout";
 	}
 
 }

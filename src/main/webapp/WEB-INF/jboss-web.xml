@@ -11,6 +11,6 @@
 	language governing permissions and limitations under the License. -->
 <!-- Configure usage of the security domain "other" -->
 <jboss-web>
+	<context-root>template-JSF-CDI-EJB</context-root>
 	<security-domain>servlet-security-quickstart</security-domain>
-	<disable-audit>true</disable-audit>
 </jboss-web>
